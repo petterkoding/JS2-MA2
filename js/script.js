@@ -54,7 +54,7 @@ function addToList() {
     saveToStorage(listKey, listItems);
     listInput.value = "";
     listInput.focus();
-    button.disabled = false;
+    button.disabled = true;
   }
 }
 
