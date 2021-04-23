@@ -1,6 +1,7 @@
 import { listKey } from "../settings/listKey.js";
 import { displayMessage } from "../components/displayMessage.js";
 import { saveToStorage, retrieveFromStorage } from "../utils/saveToStorage.js";
+import createList from "../components/createList.js";
 
 let listItems = retrieveFromStorage(listKey);
 
@@ -55,33 +56,4 @@ function addToList() {
     listInput.focus();
     button.disabled = false;
   }
-}
-
-function createList() {
-  const listContainer = document.querySelector("ul");
-
-  listContainer.innerHTML = "";
-
-  listItems.forEach((item) => {
-    listContainer.innerHTML += `<li><span>Name:${item.name} ISBN: ${item.isbn}</span><i class="far fa-trash-alt" data-id="${item.name}"></i></li>`;
-  });
-
-  const trashCans = document.querySelectorAll("li i");
-
-  trashCans.forEach((can) => {
-    can.addEventListener("click", removeFromList);
-  });
-}
-
-function removeFromList() {
-  const deleteItem = event.target.dataset.id;
-  const newList = listItems.filter((item) => {
-    if (deleteItem !== item.name) {
-      return true;
-    }
-  });
-
-  listItems = newList;
-  createList(listItems);
-  saveToStorage(listKey, newList);
 }

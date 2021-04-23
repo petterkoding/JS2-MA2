@@ -1,9 +1,10 @@
 import { listKey } from "../settings/listKey.js";
 import { displayMessage } from "../components/displayMessage.js";
+import { saveToStorage, retrieveFromStorage } from "../utils/saveToStorage.js";
 
-let listItems = retrieveFromStorage();
+let listItems = retrieveFromStorage(listKey);
 
-createList();
+createList(listItems);
 
 const listInput = document.querySelector("input");
 const button = document.querySelector("button");
@@ -48,8 +49,8 @@ function addToList() {
   }
   if (!found) {
     listItems.push(newestItem);
-    createList();
-    saveToStorage(listItems);
+    createList(listItems);
+    saveToStorage(listKey, listItems);
     listInput.value = "";
     listInput.focus();
     button.disabled = false;
@@ -81,20 +82,6 @@ function removeFromList() {
   });
 
   listItems = newList;
-  createList();
-  saveToStorage(newList);
-}
-
-function saveToStorage(valueToSave) {
-  localStorage.setItem(listKey, JSON.stringify(valueToSave));
-}
-
-function retrieveFromStorage() {
-  const currentList = localStorage.getItem(listKey);
-
-  if (!currentList) {
-    return [];
-  }
-
-  return JSON.parse(currentList);
+  createList(listItems);
+  saveToStorage(listKey, newList);
 }
