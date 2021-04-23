@@ -71,19 +71,16 @@ li i:hover {
   min-width: 150px;
   font-size: 15px;
   text-align: center;
-  color: rgb(53, 53, 53);
+  color: darkorange;
 }
 
 .message i {
-  color: grey;
+  color: darkorange;
 }
 .warning {
-  border: 1px solid darkorange;
   color: black;
 }
 
 .warning i {
-  color: darkorange;
+  color: darkred;
 }
-
-/*  */
