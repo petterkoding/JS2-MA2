@@ -1,6 +1,6 @@
-// import { listKey } from "../settings/listKey.js";
-// import { displayMessage } from "../components/displayMessage.js";
-// import { saveToStorage, retrieveFromStorage } from "../utils/saveToStorage.js";
+// import { listKey } from "./settings/listKey.js";
+// import { displayMessage } from "./components/displayMessage.js";
+// import { saveToStorage, retrieveFromStorage } from "./utils/saveToStorage.js";
 
 // let listItems = retrieveFromStorage(listKey);
 

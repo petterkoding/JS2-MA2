@@ -1,3 +1,5 @@
+import { removeFromList } from "../script.js";
+
 export default function createList(listItems) {
   const listContainer = document.querySelector("ul");
 
@@ -12,17 +14,4 @@ export default function createList(listItems) {
   trashCans.forEach((can) => {
     can.addEventListener("click", removeFromList);
   });
-}
-
-function removeFromList(listItems) {
-  const deleteItem = event.target.dataset.id;
-  const newList = listItems.filter((item) => {
-    if (deleteItem !== item.name) {
-      return true;
-    }
-  });
-
-  listItems = newList;
-  createList(newList);
-  saveToStorage(listKey, newList);
 }

@@ -1,6 +1,6 @@
-import { listKey } from "../settings/listKey.js";
+import { listKey } from "./settings/listKey.js";
 import { displayMessage } from "./components/displayMessage.js";
-import { saveToStorage, retrieveFromStorage } from "../utils/saveToStorage.js";
+import { saveToStorage, retrieveFromStorage } from "./utils/saveToStorage.js";
 import createList from "./components/createList.js";
 
 let listItems = retrieveFromStorage(listKey);
@@ -54,6 +54,19 @@ function addToList() {
     saveToStorage(listKey, listItems);
     listInput.value = "";
     listInput.focus();
-    // button.disabled = true;
+    button.disabled = false;
   }
+}
+
+export function removeFromList() {
+  const deleteItem = event.target.dataset.id;
+  const newList = listItems.filter((item) => {
+    if (deleteItem !== item.name) {
+      return true;
+    }
+  });
+
+  listItems = newList;
+  createList(listItems);
+  saveToStorage(listKey, newList);
 }
