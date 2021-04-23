@@ -2,6 +2,7 @@ import { listKey } from "./settings/listKey.js";
 import { displayMessage } from "./components/displayMessage.js";
 import { saveToStorage, retrieveFromStorage } from "./utils/saveToStorage.js";
 import createList from "./components/createList.js";
+import { doesItExist } from "./components/doesItExist.js";
 
 let listItems = retrieveFromStorage(listKey);
 
@@ -11,8 +12,6 @@ const listInput = document.querySelector("input");
 const button = document.querySelector("button");
 
 button.disabled = true;
-
-listInput.addEventListener("keyup", checkIfDisabled);
 
 const alert = ".alert";
 
@@ -30,17 +29,13 @@ function checkIfDisabled() {
   }
 }
 
-button.addEventListener("click", addToList);
-
 function addToList() {
   const name = listInput.value.trim();
   const isbn = Date.now();
 
   const newestItem = { name: name, isbn: isbn };
-  //
 
-  const found = listItems.some((el) => el.name === name);
-  if (found) {
+  if (doesItExist(listItems, name)) {
     button.disabled = true;
     displayMessage(
       "warning",
@@ -48,7 +43,7 @@ function addToList() {
       alert
     );
   }
-  if (!found) {
+  if (!doesItExist(listItems, name)) {
     listItems.push(newestItem);
     createList(listItems);
     saveToStorage(listKey, listItems);
@@ -58,7 +53,7 @@ function addToList() {
   }
 }
 
-export function removeFromList() {
+export function removeFromList(event) {
   const deleteItem = event.target.dataset.id;
   const newList = listItems.filter((item) => {
     if (deleteItem !== item.name) {
@@ -69,4 +64,11 @@ export function removeFromList() {
   listItems = newList;
   createList(listItems);
   saveToStorage(listKey, newList);
+
+  if (listItems.length === 0) {
+    displayMessage("", "List is empty", alert);
+  }
 }
+
+listInput.addEventListener("keyup", checkIfDisabled);
+button.addEventListener("click", addToList);

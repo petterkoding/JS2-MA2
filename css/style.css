@@ -5,9 +5,10 @@
 }
 
 .container {
-  margin-top: 2em;
-  width: 100%;
+  margin: auto;
+  width: 330px;
   display: grid;
+  flex-direction: column;
   place-content: center;
 }
 
@@ -20,25 +21,30 @@ label {
   width: 100%;
   font-size: 1.2em;
   font-weight: bold;
-  margin: 0.4em 0;
+  margin-bottom: 0.1em;
 }
 
 input {
   display: inline-block;
-  height: 30px;
-  width: 240px;
-  padding: 4px;
+  height: 40px;
+  width: calc(100% - 70px);
+  padding: 5px;
 }
 
 button {
+  display: inline-block;
   background: blue;
   color: white;
-  height: 30px;
-  padding: 4px;
+  height: 40px;
+  padding: 5px;
+  width: 60px;
   font-size: 15px;
   font-weight: bold;
   margin-top: 0.5em;
   border: none;
+}
+button:hover {
+  cursor: pointer;
 }
 
 button:disabled {
@@ -52,15 +58,32 @@ ul {
 }
 
 li {
+  width: 330px;
   background-color: rgba(128, 128, 128, 0.1);
   margin: 0.4em 0;
   padding: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  color: white;
+  position: relative;
+}
+
+li i {
+  position: absolute;
+  right: 10px;
+  top: 35%;
+  width: auto;
+  font-size: 1.3em;
+}
+
+li h4 {
+  font-size: 1.2em;
+  padding-bottom: 0.3em;
 }
 
 li i:hover {
-  color: teal;
+  color: cyan;
   cursor: pointer;
 }
 
@@ -78,7 +101,7 @@ li i:hover {
   color: darkorange;
 }
 .warning {
-  color: black;
+  color: darkred;
 }
 
 .warning i {

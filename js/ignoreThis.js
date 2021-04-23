@@ -1,6 +1,7 @@
 // import { listKey } from "./settings/listKey.js";
 // import { displayMessage } from "./components/displayMessage.js";
 // import { saveToStorage, retrieveFromStorage } from "./utils/saveToStorage.js";
+// import createList from "./components/createList.js";
 
 // let listItems = retrieveFromStorage(listKey);
 
@@ -10,8 +11,6 @@
 // const button = document.querySelector("button");
 
 // button.disabled = true;
-
-// listInput.addEventListener("keyup", checkIfDisabled);
 
 // const alert = ".alert";
 
@@ -29,14 +28,11 @@
 //   }
 // }
 
-// button.addEventListener("click", addToList);
-
 // function addToList() {
 //   const name = listInput.value.trim();
 //   const isbn = Date.now();
 
 //   const newestItem = { name: name, isbn: isbn };
-//   //
 
 //   const found = listItems.some((el) => el.name === name);
 //   if (found) {
@@ -53,27 +49,11 @@
 //     saveToStorage(listKey, listItems);
 //     listInput.value = "";
 //     listInput.focus();
-//     button.disabled = false;
+//     button.disabled = true;
 //   }
 // }
 
-// function createList() {
-//   const listContainer = document.querySelector("ul");
-
-//   listContainer.innerHTML = "";
-
-//   listItems.forEach((item) => {
-//     listContainer.innerHTML += `<li><span>Name:${item.name} ISBN: ${item.isbn}</span><i class="far fa-trash-alt" data-id="${item.name}"></i></li>`;
-//   });
-
-//   const trashCans = document.querySelectorAll("li i");
-
-//   trashCans.forEach((can) => {
-//     can.addEventListener("click", removeFromList);
-//   });
-// }
-
-// function removeFromList() {
+// export function removeFromList(event) {
 //   const deleteItem = event.target.dataset.id;
 //   const newList = listItems.filter((item) => {
 //     if (deleteItem !== item.name) {
@@ -85,3 +65,6 @@
 //   createList(listItems);
 //   saveToStorage(listKey, newList);
 // }
+
+// listInput.addEventListener("keyup", checkIfDisabled);
+// button.addEventListener("click", addToList);
