@@ -1,7 +1,7 @@
 import { listKey } from "../settings/listKey.js";
-import { displayMessage } from "../components/displayMessage.js";
+import { displayMessage } from "./components/displayMessage.js";
 import { saveToStorage, retrieveFromStorage } from "../utils/saveToStorage.js";
-import createList from "../components/createList.js";
+import createList from "./components/createList.js";
 
 let listItems = retrieveFromStorage(listKey);
 
@@ -54,6 +54,6 @@ function addToList() {
     saveToStorage(listKey, listItems);
     listInput.value = "";
     listInput.focus();
-    button.disabled = false;
+    // button.disabled = true;
   }
 }

@@ -23,6 +23,6 @@ function removeFromList(listItems) {
   });
 
   listItems = newList;
-  createList(listItems);
+  createList(newList);
   saveToStorage(listKey, newList);
 }
