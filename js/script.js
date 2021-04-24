@@ -55,6 +55,7 @@ function addToList() {
 
 export function removeFromList(event) {
   const deleteItem = event.target.dataset.id;
+
   const newList = listItems.filter((item) => {
     if (deleteItem !== item.name) {
       return true;
