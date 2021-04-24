@@ -27,7 +27,7 @@ label {
 input {
   display: inline-block;
   height: 40px;
-  width: calc(100% - 70px);
+  width: 250px;
   padding: 5px;
 }
 
@@ -94,7 +94,7 @@ li i:hover {
   min-width: 150px;
   font-size: 15px;
   text-align: center;
-  color: darkorange;
+  color: rgb(87, 87, 87);
 }
 
 .message i {

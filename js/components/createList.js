@@ -8,9 +8,9 @@ export default function createList(listItems) {
   listItems.forEach((item) => {
     let twoDigits = `${item.isbn % 100}`;
     let singleDigit = `${item.isbn % 10}`;
-    const rgbaValue = `rgba(0,${singleDigit}0, 2${twoDigits}, 0.7)`;
+    const rgbaValue = `rgba(${twoDigits}, 4${singleDigit}, 2${singleDigit}, 0.7)`;
 
-    listContainer.innerHTML += `<li style="background:${rgbaValue}"><h4>Name:${item.name} 
+    listContainer.innerHTML += `<li style="background:${rgbaValue}"><h4>Title:${item.name} 
     </h4><span>ISBN: ${item.isbn}</span><i class="far fa-trash-alt" data-id="${item.name}"></i></li>`;
   });
 
